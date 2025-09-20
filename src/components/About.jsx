@@ -24,7 +24,8 @@ export default function About() {
         </p>
         <h4 className="w-75 mx-auto my-4 fs-4 px-5 fw-bold about-width">
           Quisque erat urna, congue et libero in
-          <br />
+            
+
           eleifend euismod velit.
         </h4>
         <p className="w-75 mx-auto custom-font-size px-5 about-width">
@@ -90,7 +91,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="bg-white py-5 mt-5">
+      <div className="bg-white py-lg-5 mt-lg-5 mt-3 "> 
         <div className="container">
           <p className="mx-auto custom-font-size px-4 about-width">
             In nec purus eget neque accumsan finibus. Duis condimentum elit ut
