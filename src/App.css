@@ -1,5 +1,5 @@
 :root {
-  --main-color: #ff2c1f;
+  --main-color: #202435;
   --text-color: #3E445A;
   --bg-color: #35AFA0;
   --active-bg: #F0FAFF;
@@ -313,4 +313,113 @@ box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.15);
 .contact-form button:hover {
   background: #058982;
 }
+footer{
+  margin-top: 550px;
+}
+.features-section{
+  min-height: 86px;
+}
+.features-section p , .numIcon , .link-section li , .WeakNum , .AppMobile , .ListCopy{
+  color: var(--main-color); 
+}
+.features-section p {
+  font-size: 13px;
+  
+}
+/* Links Section */
+.link-section h5  , .AppMobile p{
+  font-size: 15px;
+}
+.numIcon{
+  font-size: 20px;
+}
+.link-section li {
+  margin-bottom: 0.5rem;
+  font-size: 13px;
+}
+.WeakNum {
+  font-size: 11px;
+}
+.TeamIconSocial p{
+  width: 34px;
+  height: 34px;
+}
+.ListCopy{
+  font-size: 12px;
+}
+.copyright-bar{
+  height: 25px;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .newsletter-section {
+    text-align: center;
+  }
+  .newsletter-section .form-control {
+    width: 100%;
+  }
+}
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+  .CopunOrder {
+    width: 100%; 
+    max-width: 500px;
+  }
+  .FormEmail {
+    max-width: 100%;
+  }
+}
 
+@media (max-width: 991px) {
+  .newsletter-section {
+    height: auto; 
+    padding: 2rem 0;
+  }
+  .newsletter-section img {
+    display: none;
+  }
+  .CopunOrder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .FormEmail {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section .col-6 p{
+    border: none !important; 
+  }
+  .features-section {
+    flex-wrap: wrap;
+    text-align: center;
+    row-gap: 10px;
+  }
+  .link-section {
+    text-align: center;
+  }
+  .link-section .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (max-width: 576px) {
+  .link-section .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .copyright-bar {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+  }
+  .ListCopy {
+    justify-content: center !important;
+  }
+}
