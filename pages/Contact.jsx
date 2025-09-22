@@ -119,6 +119,20 @@ export default function Contact() {
         .contact-form button:hover {
           background: #058982;
         }
+
+        /* ✅ Responsive Fix */
+        @media (max-width: 768px) {
+          .contact-form {
+            padding: 30px 20px;
+          }
+          .contact-form .form-row {
+            grid-template-columns: 1fr; /* عمود واحد بدل 2 */
+            gap: 20px;
+          }
+          .contact-header h2 {
+            font-size: 26px;
+          }
+        }
       `}</style>
 
       <div className="contact-page">
