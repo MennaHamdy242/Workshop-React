@@ -158,15 +158,15 @@ const Footer = () => {
               <img src="images/AppStore.png" width={110} height={38} alt="" />
             </div>
             <div className="TeamIconSocial d-flex justify-content-center gap-2">
-              <p className="border rounded-circle d-flex justify-content-center align-items-center">
+              <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Facebook />
-              </p>
-              <p className="border rounded-circle d-flex justify-content-center align-items-center">
+              </a>
+              <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Twitter />
-              </p>
-              <p className="border rounded-circle d-flex justify-content-center align-items-center">
+              </a>
+              <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Instagram />
-              </p>
+              </a>
             </div>
           </div>
         </div>
@@ -202,6 +202,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 
