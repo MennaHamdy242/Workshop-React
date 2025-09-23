@@ -25,8 +25,8 @@ const Footer = () => {
                 </button>
               </form>
             </div>
-            <div className="col-md-6 d-flex align-items-end justify-content-center justify-content-md-end position-absolute bottom-0 end-0">
-              <img src="image/coupon.png" width={490} alt="" />
+            <div className="col-md-6 d-flex align-items-end justify-content-center justify-content-md-end position-absolute top-0 end-0">
+              <img src="images/coupon.png" width={490} alt="" />
             </div>
           </div>
         </div>
@@ -154,8 +154,8 @@ const Footer = () => {
               </p>
             </div>
             <div className="d-flex flex-wrap mb-3 justify-content-center gap-2">
-              <img src="image/googleApp.png" width={110} height={38} alt="" />
-              <img src="image/AppStore.png" width={110} height={38} alt="" />
+              <img src="images/googleApp.png" width={110} height={38} alt="" />
+              <img src="images/AppStore.png" width={110} height={38} alt="" />
             </div>
             <div className="TeamIconSocial d-flex justify-content-center gap-2">
               <p className="border rounded-circle d-flex justify-content-center align-items-center">
@@ -202,4 +202,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
