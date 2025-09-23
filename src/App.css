@@ -392,9 +392,10 @@ footer{
   width: 34px;
   height: 34px;
 }
-.TeamIconSocial a
-.ListCopy{
+.TeamIconSocial a ,
+.ListCopy li a{
   font-size: 12px;
+  text-decoration: none;
 }
 .copyright-bar{
   height: 25px;
