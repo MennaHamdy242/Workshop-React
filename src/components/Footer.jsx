@@ -157,7 +157,7 @@ const Footer = () => {
               <img src="images/googleApp.png" width={110} height={38} alt="" />
               <img src="images/AppStore.png" width={110} height={38} alt="" />
             </div>
-            <div className="TeamIconSocial d-flex justify-content-center gap-2">
+            <div className="TeamIconSocial d-flex justify-content-center gap-2 pb-3">
               <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Facebook />
               </a>
@@ -202,6 +202,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 
