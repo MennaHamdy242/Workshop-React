@@ -191,7 +191,7 @@ const Footer = () => {
     </ul>
 
     <div className="payment-icons">
-      <img src="image/Payment.png" alt="Payment Methods" />
+      <img src="images/Payment.png" alt="Payment Methods" />
     </div>
   </div>
 </div>
@@ -202,5 +202,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
