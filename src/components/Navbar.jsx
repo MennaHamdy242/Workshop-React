@@ -97,7 +97,7 @@ function Navbar() {
             <Link to="/home" className="navbar-brand">
               <div className="logo-text">
                 <img
-                  src="image/card.png"
+                  src="images/card.jfif"
                   width={59}
                   height={50}
                   alt="Basket Logo"
