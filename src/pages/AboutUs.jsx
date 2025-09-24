@@ -1,4 +1,4 @@
-
+import People from "../images/about-people.png"
 function AboutUs() {
   return (
     <div className="about-text">
@@ -42,7 +42,7 @@ function AboutUs() {
         <div className="row align-items-center">
           <div className="col-md-6 position-relative">
             <img
-              src="images/about-people.png"
+              src={People}
               alt="About People"
               className="img-fluid rounded"
             />
