@@ -1,5 +1,7 @@
-import React from "react";
+
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from "react-router-dom";
+import Card from "../images/card.png"
 import {
   Check,
   AngleDown,
@@ -12,7 +14,10 @@ import {
   Team,
 } from "./icon";
 
-function Navbar() {
+function Navbar({ cart, addToCart, removeFromCart, shopCategories = [] })  {
+const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+const [showCategories, setShowCategories] = useState(false);
   return (
     <header className="site-header position-fixed fixed-top">
       {/* Top Strip */}
@@ -29,11 +34,6 @@ function Navbar() {
       <div className="linkItems border-bottom d-none d-lg-block">
         <div className="container d-flex justify-content-between align-items-center pt-2">
           <ul className="d-flex list-unstyled mb-0">
-            <li className="px-2">
-              <a className="nav-link" href="#about">
-                About Us
-              </a>
-            </li>
             <li className="px-2">
               <a className="nav-link" href="#compare">
                 Compare
@@ -97,7 +97,7 @@ function Navbar() {
             <Link to="/home" className="navbar-brand">
               <div className="logo-text">
                 <img
-                  src="images/card.jfif"
+                  src={Card}
                   width={59}
                   height={50}
                   alt="Basket Logo"
@@ -130,15 +130,17 @@ function Navbar() {
                 <User size={16} />
               </div>
 
-              <div className="cart-wrapper">
-                <div className="cart rounded-circle position-relative d-flex justify-content-center align-items-center">
-                  <div className="count rounded-circle top-0 end-0 position-absolute text-white d-flex justify-content-center align-items-center">
-                    0
-                  </div>
-                  <Cart size={16} />
-                </div>
-                <div className="price">$0.00</div>
-              </div>
+              <Link to="/cart" style={{ textDecoration: 'none' }}>
+  <div className="cart-wrapper" style={{ cursor: 'pointer' }}>
+    <div className="cart rounded-circle position-relative d-flex justify-content-center align-items-center">
+      <div className="count rounded-circle top-0 end-0 position-absolute text-white d-flex justify-content-center align-items-center">
+        {totalItems}
+      </div>
+      <Cart size={16} />
+    </div>
+    <div className="price">${totalPrice}</div>
+  </div>
+</Link>
             </div>
           </nav>
         </div>
@@ -147,20 +149,32 @@ function Navbar() {
       {/* Bottom Nav for LG */}
       <nav className="nav-bar d-none d-lg-block">
         <div className="container d-flex justify-content-between">
-          <button className="all-categories ms-lg-3 px-3 d-flex justify-content-between align-items-center position-relative">
-            <div className="d-flex gap-3 align-items-center">
-              <span className="pb-1">
-                <Team />
-              </span>
-              <span>ALL CATEGORIES</span>
-            </div>
-            <span>
-              <AngleDown size={10} color="#fff" />
-            </span>
-            <span className="position-absolute ms-4 border border-1 border-white rounded-5 TotalProduct px-1">
-              TOTAL 50 PRODUCTS
-            </span>
-          </button>
+          <button 
+  className="all-categories ms-lg-3 px-3 d-flex justify-content-between align-items-center position-relative"
+  onClick={() => setShowCategories(!showCategories)}
+>
+  <div className="d-flex gap-3 align-items-center">
+    <span className="pb-1">
+      <Team />
+    </span>
+    <span>ALL CATEGORIES</span>
+  </div>
+  <span>
+    <AngleDown size={10} color="#fff" />
+  </span>
+  <span className="position-absolute ms-4 border border-1 border-white rounded-5 TotalProduct px-1">
+    TOTAL 84 PRODUCTS
+  </span>
+</button>
+{showCategories && (
+  <div className="all-categories-dropdown position-absolute bg-white shadow p-2 mt-2 rounded">
+    {shopCategories.map(cat => (
+      <div key={cat} className="category-item px-2 py-1 hover:bg-gray-100 cursor-pointer">
+        {cat}
+      </div>
+    ))}
+  </div>
+)}
           {/* Nav links moved inside collapse for mobile */}
           <ul className="navbar-nav flex-row gap-2">
             <li className="nav-item">
@@ -185,22 +199,12 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink
-                to="/meats"
-                className={({ isActive }) =>
-                  `nav-link px-3 rounded-5 ${isActive ? "active-link" : ""}`
-                }
-              >
-                <Meat /> MEATS & SEAFOOD
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
                 to="/bakery"
                 className={({ isActive }) =>
                   `nav-link px-3 rounded-5 ${isActive ? "active-link" : ""}`
                 }
               >
-                <Bakery /> BAKERY
+                <Bakery /> BISCUITS
               </NavLink>
             </li>
             <li className="nav-item">
@@ -231,6 +235,16 @@ function Navbar() {
                 }
               >
                 CONTACT
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `nav-link px-3 rounded-5 ${isActive ? "active-link" : ""}`
+                }
+              >
+                ABOUT US
               </NavLink>
             </li>
           </ul>
@@ -290,16 +304,7 @@ function Navbar() {
                 SHOP
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                to="/meats"
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "active-link" : ""}`
-                }
-              >
-                <Meat /> MEATS & SEAFOOD
-              </NavLink>
-            </li>
+          
             <li className="nav-item">
               <NavLink
                 to="/bakery"
@@ -307,7 +312,7 @@ function Navbar() {
                   `nav-link ${isActive ? "active-link" : ""}`
                 }
               >
-                <Bakery /> BAKERY
+                <Bakery /> BISCUITS
               </NavLink>
             </li>
             <li className="nav-item">
@@ -340,14 +345,19 @@ function Navbar() {
                 CONTACT
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `nav-link px-3 rounded-5 ${isActive ? "active-link" : ""}`
+                }
+              >
+                ABOUT US
+              </NavLink>
+            </li>
           </ul>
           <hr />
           <ul className="list-unstyled mobile-secondary-links">
-            <li>
-              <a className="nav-link" href="#about">
-                About Us
-              </a>
-            </li>
             <li>
               <a className="nav-link" href="#compare">
                 Compare
