@@ -36,9 +36,13 @@ export default function Contact() {
         .contact-card {
           background: #f8f6f6;
           padding: 25px;
-          border-radius: 0px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.08);
           text-align: center;
+          transition: transform 0.2s ease;
+        }
+        .contact-card:hover {
+          transform: translateY(-4px);
         }
         .contact-card h4 {
           margin: 10px 0;
@@ -50,7 +54,7 @@ export default function Contact() {
           color: #666;
         }
         .icon {
-          color: #1e968aff;
+          color: #1e968a;
         }
         .contact-form {
           max-width: 800px;
@@ -119,6 +123,31 @@ export default function Contact() {
         .contact-form button:hover {
           background: #058982;
         }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+          .contact-form {
+            padding: 30px 20px;
+          }
+          .contact-form .form-row {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+        @media (max-width: 576px) {
+          .contact-header h2 {
+            font-size: 24px;
+          }
+          .contact-header p {
+            font-size: 14px;
+          }
+          .contact-form h3 {
+            font-size: 20px;
+          }
+          .contact-form p {
+            font-size: 13px;
+          }
+        }
       `}</style>
 
       <div className="contact-page">
@@ -139,13 +168,11 @@ export default function Contact() {
             <h4>102 Street 2714 Donovan</h4>
             <p>Lorem ipsum dolor sit amet discont</p>
           </div>
-
           <div className="contact-card">
             <Phone className="icon" size={32} />
             <h4>+02 1234 567 88</h4>
             <p>Lorem ipsum dolor sit amet discont</p>
           </div>
-
           <div className="contact-card">
             <Mail className="icon" size={32} />
             <h4>info@example.com</h4>
