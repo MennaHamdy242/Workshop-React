@@ -258,19 +258,33 @@ const images2 = [blog3, blog5, blog1];
                   <i className="bi bi-facebook me-2"></i> FACEBOOK
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                  className="btn d-flex align-items-center justify-content-center" style={{backgroundColor: 'orange', color: 'black'}}>
+                  className="btn d-flex align-items-center justify-content-center" 
+                  style={{
+                   background: 'linear-gradient(45deg, #fd1d1d, #fcb045, #833ab4)',
+                   color: 'black'}}>
                   <i className="bi bi-instagram me-2"></i> INSTAGRAM
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                  className="btn btn-info d-flex align-items-center justify-content-center">
-                  <i className="bi bi-twitter me-2"></i> TWITTER
-                </a>
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"
-                  className="btn d-flex align-items-center justify-content-center" style={{backgroundColor: 'yellow', color: 'black'}}>
+                className="btn d-flex align-items-center justify-content-center"
+                style={{
+                  backgroundColor: '#1da1f2',
+                  color: 'white',
+                  border: 'none'
+                }}>
+                <i className="bi bi-twitter me-2"></i> TWITTER
+              </a>
+                     <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"
+                  className="btn d-flex align-items-center justify-content-center"
+                  style={{
+                    background: '#2c2a26ff',
+                    color: 'white',
+                    border: 'none'
+                  }}>
                   <i className="bi bi-tiktok me-2"></i> TIKTOK
                 </a>
                 <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer"
-                  className="btn d-flex align-items-center justify-content-center" style={{backgroundColor: 'red', color: 'white'}}>
+                  className="btn d-flex align-items-center justify-content-center"
+                   style={{backgroundColor: 'red', color: 'white'}}>
                   <i className="bi bi-pinterest me-2"></i> PINTEREST
                 </a>
               </div>
