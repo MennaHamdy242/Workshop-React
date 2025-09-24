@@ -56,14 +56,15 @@ export default function Contact() {
         .icon {
           color: #1e968a;
         }
-        .contact-form {
-          max-width: 800px;
-          margin: 0 auto;
-          background: #fff;
-          padding: 40px 60px;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+       .contact-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
         .contact-form h3 {
           text-align: center;
           font-size: 24px;
@@ -219,3 +220,4 @@ export default function Contact() {
     </>
   );
 }
+
