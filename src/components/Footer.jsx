@@ -1,5 +1,8 @@
 import React from 'react';
  import { Fresh , Truck , Daily , Price , Call , Facebook , Twitter , Instagram} from './icon';
+ import googleApp from '../images/googleApp.png';
+ import appStore from '../images/AppStore.png';
+ import payment from '../images/Payment.png';
 
 const Footer = () => {
   return (
@@ -60,69 +63,57 @@ const Footer = () => {
           {/* Links Section */}
           <div className="row text-center text-md-start mt-4 link-section">
             <div className="col-6 col-md-2 mb-3">
-              <h5 className="fw-bold">FRUIT & VEGETABLES</h5>
+              <h5 className="fw-bold">Confectionery & Chocolate</h5>
               <ul className="list-unstyled fw-normal">
-                <li>Fresh Vegetables</li>
-                <li>Herbs & Seasonings</li>
-                <li>Fresh Fruits</li>
-                <li>Cuts & Spreads</li>
-                <li>Exotic Fruits & Veggies</li>
-                <li>Packaged Produce</li>
-                <li>Party Trays</li>
+                <li>Quality Street Collisions Caramel & Hazelnut</li>
+                <li>KitKat Chunky White Chocolate</li>
+                <li>Aero Peppermint Chocolate Bar</li>
+                <li>Quality Street Collisions</li>
+                <li>KitKat Chunky Peanut Butter</li>
+                <li>Aero Milk Chocolate Bar</li>
+            
+               
               </ul>
             </div>
             <div className="col-6 col-md-2 mb-3">
-              <h5 className="fw-bold">BREAKFAST & DAIRY</h5>
+              <h5 className="fw-bold"> Biscuits & Snacks</h5>
               <ul className="list-unstyled fw-normal">
-                <li>Milk & Flavored Milk</li>
-                <li>Butter and Margarine</li>
-                <li>Cheese</li>
-                <li>Eggs Substitutes</li>
-                <li>Honey</li>
-                <li>Marmalades</li>
-                <li>Sour Cream and Dips</li>
-                <li>Yogurt</li>
+                <li>SunChips Harvest Cheddar Multigrain Snacks</li>
+                <li>Cheetos Frito Lay Crunchy Cheese Flavored</li>
+                <li>Frito Lay Cheetos Crunchy Flamin Hot</li>
+                <li>Fritos Corn Snacks, Queso Flavored</li>
+                     
               </ul>
             </div>
             <div className="col-6 col-md-2 mb-3">
-              <h5 className="fw-bold">MEAT & SEAFOOD</h5>
+              <h5 className="fw-bold">Breakfast & Dairy</h5>
               <ul className="list-unstyled fw-normal">
-                <li>Breakfast Sausage</li>
-                <li>Dinner Sausage</li>
-                <li>Beef</li>
-                <li>Chicken</li>
-                <li>Sliced Deli Meat</li>
-                <li>Shrimp</li>
-                <li>Wild Caught Fillets</li>
-                <li>Crab and Shellfish</li>
-                <li>Farm-Raised Fillets</li>
+                <li>Quaker Instant Oatmeal Maple & Brown Sugar</li>
+                <li>Quaker Instant Oatmeal Apples & Cinnamon</li>
+                <li>Quaker Instant Grits, Original Flavor</li>
+                <li>Quaker Breakfast Flats Blueberry</li>
+             
+                
+              </ul>
+            </div>
+            <div className="col-6 col-md-2 mb-3">
+              <h5 className="fw-bold">Grocery & Staples</h5>
+              <ul className="list-unstyled fw-normal">
+                <li>Betty Crocker™ Rainbow Chip Rich & Creamy</li>
+                <li>Betty Crocker™ Whipped Strawberry Mist</li>
+                <li>Betty Crocker™ Whipped Fluffy White </li>
+                <li>Betty Crocker™ Lemon Rich & Creamy </li>
+
               </ul>
             </div>
             <div className="col-6 col-md-2 mb-3">
               <h5 className="fw-bold">BEVERAGES</h5>
               <ul className="list-unstyled fw-normal">
-                <li>Water</li>
-                <li>Sparkling Water</li>
-                <li>Soda & Pop</li>
-                <li>Coffee</li>
-                <li>Milk & Plant-Based Milk</li>
-                <li>Tea & Kombucha</li>
-                <li>Drink Boxes & Pouches</li>
-                <li>Craft Beer</li>
-                <li>Wine</li>
-              </ul>
-            </div>
-            <div className="col-6 col-md-2 mb-3">
-              <h5 className="fw-bold">BREADS & BAKERY</h5>
-              <ul className="list-unstyled fw-normal">
-                <li>Milk & Flavored Milk</li>
-                <li>Butter and Margarine</li>
-                <li>Cheese</li>
-                <li>Eggs Substitutes</li>
-                <li>Honey</li>
-                <li>Marmalades</li>
-                <li>Sour Cream and Dips</li>
-                <li>Yogurt</li>
+                  <li>Coca-Cola Diet Coke Low-Calorie Soft Drink</li>
+                  <li>Coca-Cola Sprite Lemon-Lime Soft Drink</li>
+                  <li>Coca-Cola Fanta Orange Flavored Soda</li>
+                <li>Coca-Cola 2 Liter Soda Pop Classic</li>
+              
               </ul>
             </div>
           </div>
@@ -154,19 +145,19 @@ const Footer = () => {
               </p>
             </div>
             <div className="d-flex flex-wrap mb-3 justify-content-center gap-2">
-              <img src="images/googleApp.png" width={110} height={38} alt="" />
-              <img src="images/AppStore.png" width={110} height={38} alt="" />
+              <img src={googleApp} width={110} height={38} alt="" />
+              <img src={appStore} width={110} height={38} alt="" />
             </div>
-            <div className="TeamIconSocial d-flex justify-content-center gap-2 pb-3">
-              <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
+            <div className="TeamIconSocial d-flex justify-content-center gap-2">
+              <p className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Facebook />
-              </a>
-              <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
+              </p>
+              <p className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Twitter />
-              </a>
-              <a href='' className="border rounded-circle d-flex justify-content-center align-items-center">
+              </p>
+              <p className="border rounded-circle d-flex justify-content-center align-items-center">
                 <Instagram />
-              </a>
+              </p>
             </div>
           </div>
         </div>
@@ -191,7 +182,7 @@ const Footer = () => {
     </ul>
 
     <div className="payment-icons">
-      <img src="images/Payment.png" alt="Payment Methods" />
+      <img src={payment} alt="Payment Methods" />
     </div>
   </div>
 </div>
@@ -202,8 +193,5 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
 
 
