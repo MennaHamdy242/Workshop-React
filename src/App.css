@@ -153,7 +153,7 @@
 }
 /* AboutUs */
 .about-hero {
-  background-image: url('../public/images/about.png');
+  background-image: url('../src/images/about.png');
   background-size: cover;
   background-position: center;
   min-height: 60vh;
@@ -392,19 +392,9 @@ footer{
   width: 34px;
   height: 34px;
 }
-.TeamIconSocial a ,
-.ListCopy li a{
+.TeamIconSocial a
+.ListCopy{
   font-size: 12px;
-  text-decoration: none;
-}
-.TeamIconSocial a{
-  color: var(--bg-color);
-  transition: 0.5s;
-}
-.TeamIconSocial a:hover{
-  transition: 0.5s;
-  color: white;
-  background-color: var(--bg-color);
 }
 .copyright-bar{
   height: 25px;
