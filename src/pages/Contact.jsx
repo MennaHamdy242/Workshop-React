@@ -96,15 +96,16 @@ export default function Contact() {
           font-weight: 500;
           color: #333;
         }
-        .contact-form input,
-        .contact-form textarea {
-          background-color: #f5f3f3;
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #ddd;
-          border-radius: 6px;
-          font-size: 14px;
-        }
+       .contact-form input,
+.contact-form textarea {
+  background-color: #f5f3f3;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box; /* ✅ ensures padding/border don't make it overflow */
+}
         .contact-form textarea {
           resize: none;
         }
@@ -220,4 +221,5 @@ export default function Contact() {
     </>
   );
 }
+
 
