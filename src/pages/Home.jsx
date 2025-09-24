@@ -194,7 +194,7 @@ const BestSellerCard = ({ product, addToCart }) => {
 
 const HeroSection = () => (
   <section
-    className="hero-section p-5 mb-5"
+    className="hero-section rounded-3 p-5 mb-5"
     style={{ backgroundImage: `url(${heroBackground})` }}
   >
     <Container fluid="xxl" className="px-4 px-sm-5">
@@ -202,7 +202,7 @@ const HeroSection = () => (
         <Col md={8} lg={6}>
           <div className="py-md-5">
             <div className="d-flex align-items-center mb-4">
-              <span className="me-3 small fw-semibold hero-text-main">
+              <span className="me-3 small fw-semibold hero-text-main text-dark">
                 EXCLUSIVE OFFER
               </span>
               <span
@@ -244,8 +244,12 @@ const HeroSection = () => (
 );
 
 const CategoryCard = ({ name, count, imageUrl, isLarge = false }) => (
-  <div className={`category-card ${isLarge ? "large" : ""}`}>
-    <div className="category-card-image">
+  <div
+    className={`category-card  flex-column justify-content-center text-center d-flex align-items-center p-3 border-top border-start ${
+      isLarge ? "large" : ""
+    }`}
+  >
+    <div className="category-card-image d-flex align-items-center justify-content-center rounded-2 me-0 mb-3">
       {imageUrl && (
         <img
           src={`http://localhost:5000${imageUrl}`}
@@ -266,7 +270,7 @@ const CategoriesSection = ({ categories }) => {
     <section className="my-5">
       <Link to="/shop" className="text-decoration-none">
         <div className="border border-2 rounded-3 overflow-hidden">
-          <div className="d-grid category-grid-container">
+          <div className="d-grid category-grid-container d-grid">
             {categories.map((cat, index) => (
               <CategoryCard
                 key={cat.name + index}
@@ -294,7 +298,7 @@ const FeaturedDeal = ({ product }) => {
     rating,
   } = product;
   return (
-    <Card className="featured-deal-card p-4 h-100">
+    <Card className="featured-deal-card h-100 p-4 h-100">
       <Card.Body className="d-flex flex-column">
         <h2 className="h4 fw-bold">Deals of the week!</h2>
         <div className="d-flex align-items-center gap-2 my-4">
@@ -379,7 +383,7 @@ const DealsSection = ({ products, featuredProduct }) => {
   });
 
   return (
-    <section className="my-5 deals-section">
+    <section className="my-5 deals-section flex-column d-flex">
       <Row className="g-3 align-items-stretch">
         <Col lg={4}>
           <FeaturedDeal product={featuredProduct} />
@@ -463,17 +467,21 @@ const BestSellersSection = ({ products, addToCart }) => {
     }
   };
 
-  // make sure container snaps nicely on mobile
   useEffect(() => {
     const el = scrollContainerRef.current;
     if (!el) return;
     const onWheel = (e) => {
-      // prevent accidental vertical scroll hijack
       if (window.innerWidth <= 576) return;
     };
     el.addEventListener("wheel", onWheel);
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
+
+  const scrollbarHideStyle = {
+    scrollBehavior: "smooth",
+    msOverflowStyle: "none",
+    scrollbarWidth: "none",
+  };
 
   return (
     <section className="my-5 position-relative">
@@ -494,10 +502,18 @@ const BestSellersSection = ({ products, addToCart }) => {
         </Button>
       </div>
       <div
-        className="d-flex pb-3 mx-n3 overflow-auto"
-        style={{ scrollBehavior: "smooth" }}
+        className="d-flex pb-3 mx-n3 overflow-x-auto"
+        style={scrollbarHideStyle}
         ref={scrollContainerRef}
       >
+        <style>
+          {`
+            .overflow-x-auto::-webkit-scrollbar {
+              display: none;
+            }
+          `}
+        </style>
+
         {products.map((product) => (
           <div className="flex-shrink-0 px-3" key={product.id}>
             <BestSellerCard product={product} addToCart={addToCart} />
@@ -540,12 +556,15 @@ const SuperDiscountSection = ({ products }) => (
   </section>
 );
 
-const SmallBanner = ({ title, subtitle, imageUrl }) => (
+const SmallBanner = ({ title, subtitle, imageUrl, discountText }) => (
   <div
     className="small-banner rounded p-4 d-flex flex-column justify-content-center"
     style={{ backgroundImage: `url(${imageUrl})` }}
   >
-    <p className="small fw-bold mb-2">WEEKEND DISCOUNT</p>
+    <p className="small fw-bold mb-2" style={{ color: "#00B853" }}>
+      {discountText}
+    </p>
+
     <h3 className="h4 fw-bold mb-2" style={{ maxWidth: "150px" }}>
       {title}
     </h3>
@@ -566,13 +585,20 @@ const SmallBannersSection = () => {
       title: "Natural Eggs",
       subtitle: "Eat one every day",
       imageUrl: smallbanners1,
+      discountText: "WEEKEND DISCOUNT 40%",
     },
     {
       title: "Taste the Best",
       subtitle: "Shine the morning",
       imageUrl: smallbanners2,
+      discountText: "WEEKEND DISCOUNT 40%",
     },
-    { title: "Ditch the Junk", subtitle: "Breakfast", imageUrl: smallbanners3 },
+    {
+      title: "Ditch the Junk",
+      subtitle: "Breakfast",
+      imageUrl: smallbanners3,
+      discountText: "WEEKEND DISCOUNT 40%",
+    },
   ];
   return (
     <section className="my-5">
