@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faInstagram, faWhatsapp, faSnapchat } from '@fortawesome/free-brands-svg-icons';
 import { faShareNodes, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useWishlist } from "../context/WishlistContext";
 
 function PurchaseOrders({ product, onClose, addToCart }) {
+  const { addToWishlist} = useWishlist();
   const [showFullDesc, setShowFullDesc] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('medium');
@@ -300,25 +302,25 @@ const handleCopyLink = () => {
 
   <div style={{ display: 'flex', gap: '10px' }}>
     {/* Wishlist Button */}
-    <button
-      style={{
-        width: '195px',
-        marginLeft: ' 40px',
-        padding: '10px',
-        border: '1px solid #ddd',
-        borderRadius: '6px',
-        background: '#fff',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '6px'
-      }}
-      
-    >
-      <FontAwesomeIcon icon={faHeart} style={{ color: '#D51243' }} />
-      Wishlist
-    </button>
+   <button
+  onClick={() => addToWishlist(product)}   // ⬅ يضيف المنتج للويش ليست
+  style={{
+    width: '195px',
+    marginLeft: '40px',
+    padding: '10px',
+    border: '1px solid #ddd',
+    borderRadius: '6px',
+    background: '#fff',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '6px'
+  }}
+>
+  <FontAwesomeIcon icon={faHeart} style={{ color: '#D51243' }} />
+  Wishlist
+</button>
 
     {/* Share Button */}
     <button
