@@ -504,37 +504,16 @@ footer{
   color: var(--home-deal-accent) !important;
 }
 
-.deals-section .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.deals-section [class*="col-"] {
-  display: flex;
-  flex-direction: column;
-}
-
 .hero-section {
   background-size: cover;
   background-position: center;
-  border-radius: 0.5rem;
-  padding: 3rem !important; 
-}
-
-.hero-text-main {
-  color: #000000 !important; 
-}
-
-.hero-section .text-muted-light,
-.hero-section .hero-text-muted {
-  color: #555 !important; 
 }
 
 .hero-shop-now-btn {
   background-color: var(--bg-color);
   border-color: var(--bg-color);
-  color: #fff; 
 }
+
 .hero-shop-now-btn:hover {
   background-color: #2d9486;
   border-color: #2d9486;
@@ -543,46 +522,28 @@ footer{
   color: var(--home-deal-accent);
 }
 
-.container-fluid > .my-5:first-of-type {
-    margin-top: 0 !important;
-}
 .text-brand-red {
   color: var(--home-deal-accent);
 }
 
 .category-grid-container {
-    display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, auto);
     grid-auto-flow: dense;
 }
 .category-card {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  border-top: 1px solid var(--border-color);
-  border-left: 1px solid var(--border-color);
   color: var(--home-text-dark);
   min-height: 100px;
 }
 .category-card.large {
-  flex-direction: column;
-  justify-content: center;
   grid-row: span 2;
-  text-align: center;
 }
 .category-card-image {
   background-color: var(--home-category-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.375rem;
 }
 .category-card.large .category-card-image {
   width: 10rem;
   height: 10rem;
-  margin-right: 0;
-  margin-bottom: 1rem;
 }
 .category-card:not(.large) .category-card-image {
   width: 5rem;
@@ -592,7 +553,6 @@ footer{
 
 .featured-deal-card {
   border: 2px solid var(--home-deal-accent);
-  height: 100%;
 }
 .product-card {
   border-top: 1px solid var(--border-color);
@@ -649,6 +609,7 @@ footer{
   padding: 0 1rem;
   box-sizing: border-box;
 }
+
 .best-seller-card .add-to-cart-btn {
   background-color: var(--star-color);
   color: var(--home-text-dark);
@@ -663,6 +624,7 @@ footer{
 .best-seller-card .add-to-cart-btn:hover {
   background-color: #e0b00f;
 }
+
 .slider-arrows {
   position: absolute;
   top: 50%;
@@ -716,21 +678,25 @@ footer{
   background-color: var(--bg-color);
   color: white;
 }
+
 .discount-banner,
 .small-banner {
   background-size: cover;
   background-position: center;
   border-radius: 0.5rem;
 }
+
 .discount-banner .text-dark {
   color: var(--home-text-dark) !important;
 }
+
 .banner-shop-now-btn {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   width: auto;
 }
+
 .banner-btn-dark {
   background-color: var(--home-text-dark);
   color: white;
@@ -749,20 +715,25 @@ footer{
 .news-card .card-title a:hover {
   color: var(--bg-color) !important;
 }
+
 .small-banner .btn-custom {
   background-color: var(--home-small-banner-btn-bg);
   color: var(--home-text-muted);
   border: none;
 }
+
 .small-banner .btn-custom:hover {
   opacity: 0.8;
 }
+
 .super-discount-banner {
   background-color: var(--home-super-discount-bg);
 }
+
 .super-discount-banner .fw-bold.small {
   color: var(--home-text-dark);
 }
+
 .deals-section {
   position: relative;
   z-index: 10;
@@ -803,11 +774,14 @@ footer{
   grid-auto-flow: dense;
   gap: 0;
 }
+
+/* ======================= Media Queries ======================= */
 @media (max-width: 1200px) {
   .best-seller-slide {
     flex-basis: 25%;
   }
 }
+
 @media (max-width: 992px) {
   .best-seller-slide {
     flex-basis: 33.33%;
@@ -822,6 +796,7 @@ footer{
     margin-bottom: 1rem;
   }
 }
+
 @media (max-width: 768px) {
   .hero-section {
     padding: 1.5rem !important;
@@ -890,3 +865,4 @@ footer{
     padding-right: 0.5rem;
   }
 }
+
