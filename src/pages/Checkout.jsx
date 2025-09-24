@@ -337,7 +337,7 @@ font-size: 0.6rem !important;
   background-color:#ebebeb;
 }
        `}</style>
-      {/* <Header />*/}
+     <Header />
       <div className="container main-container mt-3">
         <div className="row gap-0">
           <div className="col-lg-8">
