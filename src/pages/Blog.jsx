@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import banner from "../images/banner.png";
+import blog3 from "../images/blog-3.jpg";
+import blog5 from "../images/blog-5.jpg";
+import blog1 from "../images/blog-1.jpg";
+
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
@@ -31,16 +36,8 @@ const Blog = () => {
       });
   }, []);
 
-  const images = [
-    "/images/blog-3.jpg",
-    "/images/blog-5.jpg"
-  ];
-
-  const images2 = [
-    "/images/blog-3.jpg",
-    "/images/blog-5.jpg",
-    "/images/blog-1.jpg"
-  ];
+ const images = [blog3, blog5];
+const images2 = [blog3, blog5, blog1];
 
   const thumbnailTitles = [
     "But I must explain to you how all this mistaken idea",
@@ -261,7 +258,7 @@ const Blog = () => {
                   <i className="bi bi-facebook me-2"></i> FACEBOOK
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                  className="btn btn-danger d-flex align-items-center justify-content-center">
+                  className="btn d-flex align-items-center justify-content-center" style={{backgroundColor: 'orange', color: 'black'}}>
                   <i className="bi bi-instagram me-2"></i> INSTAGRAM
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
@@ -269,11 +266,11 @@ const Blog = () => {
                   <i className="bi bi-twitter me-2"></i> TWITTER
                 </a>
                 <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"
-                  className="btn btn-warning d-flex align-items-center justify-content-center">
+                  className="btn d-flex align-items-center justify-content-center" style={{backgroundColor: 'yellow', color: 'black'}}>
                   <i className="bi bi-tiktok me-2"></i> TIKTOK
                 </a>
                 <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer"
-                  className="btn btn-danger d-flex align-items-center justify-content-center">
+                  className="btn d-flex align-items-center justify-content-center" style={{backgroundColor: 'red', color: 'white'}}>
                   <i className="bi bi-pinterest me-2"></i> PINTEREST
                 </a>
               </div>
@@ -283,7 +280,7 @@ const Blog = () => {
             <div className="mb-4 p-3">
               <h5 className="mb-3">WIDGET BANNER</h5>
               <img
-                src="/images/banner.png"
+                src={banner}
                 alt="Ad"
                 className="w-75 rounded-2"
               />
@@ -316,7 +313,7 @@ const Blog = () => {
               width: 36,
               height: 36,
               borderRadius: "50%",
-              background: "#0ecfdcff",
+              background: "#35AFA0",
               color: "#fff",
               fontWeight: "bold",
               fontSize: "1.1rem",
