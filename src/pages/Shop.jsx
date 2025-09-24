@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from "../components/Navbar";
 import SideBarImg from '../images/ShopPage/SideBar.jpg';
 import SecondImg from '../images/ShopPage/Second.jpg';
 import PurchaseOrders from './PurchaseOrders';
+import Navbar from '../components/Navbar';
 
-function ProductCard({ name, price, oldPrice, discount, rating, reviews, image, onClick }) {
-  const [quantity, setQuantity] = useState(0);
-  const increase = () => setQuantity(prev => prev + 1);
-  const decrease = () => setQuantity(prev => (prev > 0 ? prev - 1 : 0));
+function ProductCard({ name, price, oldPrice, discount, rating, reviews, image, onClick , cart , addToCart, removeFromCart, id}) {
+  
+const quantity = cart.find(item => item.id === id)?.quantity || 0;
+
+const increase = () => addToCart({ id, name, price, image });
+const decrease = () => removeFromCart(id);
 
   return (
+
     <div style={{
       width: '100%',
       maxWidth: '213.75px',
@@ -76,7 +79,7 @@ function ProductCard({ name, price, oldPrice, discount, rating, reviews, image, 
   );
 }
 
-function Shop() {
+function Shop({cart, addToCart, removeFromCart}) {
   const [allProducts, setAllProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [availabilityFilter, setAvailabilityFilter] = useState('all');
@@ -151,12 +154,22 @@ function Shop() {
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   return (
+
+    <>
+    <Navbar 
+      cart={cart} 
+      addToCart={addToCart} 
+      removeFromCart={removeFromCart} 
+      shopCategories={['Confectionery & Chocolate','Beverages','Biscuits & Snacks','Breakfast & Dairy','Grocery & Staples','Frozen Foods']}
+    />
+
+  
     <div style={{ display: 'flex', flexWrap: 'wrap', padding: '10px', gap: '20px', justifyContent: 'center' }}>
       {/* Side Bar */}
       <div style={{ flex: '1 1 250px', minWidth: '250px', maxWidth: '300px' }}>
         {/* Categories */}
         <div style={{display:'flex', flexDirection:'column', gap:'6px', marginBottom:'15px'}}>
-          <h3>PRODUCTS CATEGORIES</h3>
+          <h5><b>PRODUCTS CATEGORIES</b></h5>
           {['Confectionery & Chocolate','Beverages','Biscuits & Snacks','Breakfast & Dairy','Grocery & Staples','Frozen Foods'].map(c => (
             <div key={c}>
               <label>
@@ -168,7 +181,7 @@ function Shop() {
 
         {/* Brands */}
         <div style={{display:'flex', flexDirection:'column', gap:'6px', marginBottom:'15px'}}>
-          <h3>BRANDS</h3>
+          <h5><b>BRANDS</b></h5>
           {[
             { name: 'Quaker', count: 36 },
             { name: 'Oreo', count: 17 },
@@ -190,7 +203,7 @@ function Shop() {
 
         {/* Price */}
         <div style={{display:'flex', flexDirection:'column'}}>
-          <h3>PRICE</h3>
+          <h5><b>PRICE</b></h5>
           <div style={{ marginBottom: '15px' }}>
             <div style={{ display: 'flex', marginBottom: '8px', gap:'65px' }}>
               <label>From</label>
@@ -206,7 +219,7 @@ function Shop() {
 
         {/* Availability */}
         <div style={{display:'flex', flexDirection:'column', gap:'6px', marginBottom:'15px'}}>
-          <h3>AVAILABILITY</h3>
+          <h5><b>AVAILABILITY</b></h5>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <input type="checkbox" checked={availabilityFilter === 'in'} onChange={() => setAvailabilityFilter('in')} />
@@ -247,16 +260,21 @@ function Shop() {
         }}>
           {currentProducts.map(product => (
             <ProductCard
-              key={product.id}
-              name={product.name}
-              price={product.price}
-              oldPrice={product.oldPrice}
-              discount={product.discount}
-              rating={product.rating}
-              reviews={product.reviews}
-              image={product.imageFront || product.image }
-              onClick={() => openPurchaseOrders(product)} 
-            />
+  
+  key={product.id}
+  id={product.id}                      
+  name={product.name}
+  price={product.price}
+  oldPrice={product.oldPrice}
+  discount={product.discount}
+  rating={product.rating}
+  reviews={product.reviews}
+  image={product.imageFront || product.image }
+  onClick={() => openPurchaseOrders(product)}
+  cart={cart}                           
+  addToCart={addToCart}                
+  removeFromCart={removeFromCart}      
+/>
           ))}
         </div>
 {/* Pagination */}
@@ -303,9 +321,10 @@ function Shop() {
 
       {/* Purchase Orders Modal */}
       {selectedProduct && (
-        <PurchaseOrders product={selectedProduct} onClose={closePurchaseOrders} />
+        <PurchaseOrders product={selectedProduct} onClose={closePurchaseOrders} addToCart={addToCart} />
       )}
     </div>
+    </>
   );
 }
 

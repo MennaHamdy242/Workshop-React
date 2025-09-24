@@ -5,7 +5,7 @@ import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faInstagram, faWhatsapp, faSnapchat } from '@fortawesome/free-brands-svg-icons';
 import { faShareNodes, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-function PurchaseOrders({ product, onClose }) {
+function PurchaseOrders({ product, onClose, addToCart }) {
   const [showFullDesc, setShowFullDesc] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('medium');
@@ -18,8 +18,6 @@ function PurchaseOrders({ product, onClose }) {
   const [showShare, setShowShare] = useState(false);
   const selectedSizeObj = product.sizes?.find(s => s.size.toLowerCase() === selectedSize.toLowerCase());
 const displayPrice = selectedSizeObj ? selectedSizeObj.price.toFixed(2) : product.price.toFixed(2);
-
-
 
 const [images, setImages] = useState([]); 
 useEffect(() => {
@@ -227,7 +225,7 @@ const handleCopyLink = () => {
 
           {/* Right: details */}
           <div style={{ flex: '1 1 380px', minWidth: '300px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <h2 style={{ margin: 0 }}>{product.name}</h2>
+            <h2 style={{ margin: 0 , fontSize:'25px' }}>{product.name}</h2>
 
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', flexWrap: 'wrap' }}>
     <div style={{ fontSize: '20px', fontWeight: '700', color: '#D51243' }}>
@@ -295,7 +293,8 @@ const handleCopyLink = () => {
       marginLeft: '40px'
       
     }}
-  >
+  onClick={() => addToCart({ ...product, price: displayPrice }, quantity)}
+>
     Add to cart
   </button>
 
@@ -315,6 +314,7 @@ const handleCopyLink = () => {
         justifyContent: 'center',
         gap: '6px'
       }}
+      
     >
       <FontAwesomeIcon icon={faHeart} style={{ color: '#D51243' }} />
       Wishlist
@@ -434,12 +434,12 @@ const handleCopyLink = () => {
 </div>
 
             {/* Product Details */}
-           <div style={{ marginTop: '8px' }}>
-  <div style={{ fontWeight: 700, marginBottom: '8px' }}>Product Details</div>
+           <div style={{ marginTop: '-7px' }}>
+  <div style={{ fontWeight: 700, marginBottom: '2px' }}>Product Details</div>
   <p style={{ 
       margin: 0, 
       color: '#555', 
-      fontSize: '14px', 
+      fontSize: '12px', 
       maxHeight: showFullDesc ? 'none' : '48px', 
       overflow: 'hidden' 
     }}>
@@ -456,7 +456,7 @@ const handleCopyLink = () => {
         </div>
 
        {/* Related Products (inside modal below details) */}
-<div style={{ marginTop: '20px' }}>
+<div style={{ marginTop: '2px' }}>
   <h3 style={{ margin: '0 0 12px 0' }}>Related Products</h3>
 
   <div style={{ position: 'relative', padding: '0 40px' }}>
