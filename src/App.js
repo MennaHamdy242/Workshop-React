@@ -59,7 +59,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Navigate to="/home" replace />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/home" element={ <Home cart={cart}addToCart={addToCart}removeFromCart={removeFromCart}/>}/>
               <Route path="/shop" element={<Shop cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} />
               <Route path="/meats" element={<Shop cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} />
               <Route path="/bakery" element={<Shop cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} />
