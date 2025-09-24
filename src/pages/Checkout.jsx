@@ -1,15 +1,15 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useCart } from "../../src/conext/CartContext";
-import { useAuth } from "../../src/conext/AuthContext";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import cart from "./Cart";
+import Header from "../components/Navbar";
+import { useLocation } from "react-router-dom";
 
 const Checkout = () => {
-  const { state, dispatch } = useCart();
+  const location = useLocation();
+  const { cart } = location.state || { cart: [] };
   return (
     <div className="checkout-page">
-       <style>{`
+      <style>{`
 @import '~bootstrap/dist/css/bootstrap.min.css';
 *{
     margin: 0;
@@ -337,7 +337,7 @@ font-size: 0.6rem !important;
   background-color:#ebebeb;
 }
        `}</style>
-     <Header />
+      {/* <Header />*/}
       <div className="container main-container mt-3">
         <div className="row gap-0">
           <div className="col-lg-8">
@@ -361,39 +361,32 @@ font-size: 0.6rem !important;
 };
 export default Checkout;
 
-
 /////////////ContactSection
 
 const ContactSection = () => {
-  const { user, login } = useAuth();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(true);
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    try {
-      await login(email, 'dummy-password');
-    } catch (error) {
-      console.error('Login error:', error);
-    }
+    console.log("Login clicked. Email entered:", email);
   };
 
   return (
     <div className="checkout-section">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2 className="mb-0">Contact</h2>
-        {!user && (
-          <div className="login-link">
-            <button
-              type="button"
-              className="btn btn-link p-0 text-decoration-underline"
-              onClick={handleLogin}
-              style={{ fontSize: 'inherit' }}
-            >
-              Log in
-            </button>
-          </div>
-        )}
+
+        <div className="login-link">
+          <button
+            type="button"
+            className="btn btn-link p-0 text-decoration-underline"
+            onClick={handleLogin}
+            style={{ fontSize: "inherit" }}
+          >
+            Log in
+          </button>
+        </div>
       </div>
 
       <div className="form-group">
@@ -407,13 +400,7 @@ const ContactSection = () => {
         />
       </div>
 
-      {user && (
-        <div className="user-info mt-2 mb-2">
-          <small className="text-muted">Logged in as: {user.email}</small>
-        </div>
-      )}
-
-      <div className="subscription-option">
+      <div className="subscription-option mt-2">
         <div className="form-check">
           <input
             className="form-check-input"
@@ -431,31 +418,28 @@ const ContactSection = () => {
   );
 };
 
-
-
-
 /////////////DeliverySection
 
 const DeliverySection = () => {
-  const [selectedCountry, setSelectedCountry] = useState('US');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [apartment, setApartment] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState("US");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [apartment, setApartment] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem('checkoutData'));
+    const savedData = JSON.parse(localStorage.getItem("checkoutData"));
     if (savedData) {
-      setSelectedCountry(savedData.selectedCountry || 'US');
-      setFirstName(savedData.firstName || '');
-      setLastName(savedData.lastName || '');
-      setAddress(savedData.address || '');
-      setCity(savedData.city || '');
-      setPostalCode(savedData.postalCode || '');
-      setApartment(savedData.apartment || '');
+      setSelectedCountry(savedData.selectedCountry || "US");
+      setFirstName(savedData.firstName || "");
+      setLastName(savedData.lastName || "");
+      setAddress(savedData.address || "");
+      setCity(savedData.city || "");
+      setPostalCode(savedData.postalCode || "");
+      setApartment(savedData.apartment || "");
     }
   }, []);
 
@@ -473,9 +457,9 @@ const DeliverySection = () => {
         postalCode,
         apartment
       };
-      localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+      localStorage.setItem("checkoutData", JSON.stringify(checkoutData));
     } else {
-      localStorage.removeItem('checkoutData');
+      localStorage.removeItem("checkoutData");
     }
   };
 
@@ -597,8 +581,6 @@ const DeliverySection = () => {
   );
 };
 
-
-
 /////////////ShippingSection
 const ShippingSection = () => {
   const [selected, setSelected] = useState({ name: "Standard", price: "FREE" });
@@ -607,7 +589,7 @@ const ShippingSection = () => {
   const options = [
     { name: "Standard", price: "FREE" },
     { name: "Express", price: "$10" },
-    { name: "Next-Day", price: "$20" },
+    { name: "Next-Day", price: "$20" }
   ];
 
   return (
@@ -641,8 +623,6 @@ const ShippingSection = () => {
   );
 };
 
-
-
 /////////////PaymentSection
 
 const PaymentSection = () => {
@@ -651,48 +631,51 @@ const PaymentSection = () => {
       <h2>Payment</h2>
       <p className="secure-text">All transactions are secure and encrypted.</p>
       <div className="payment-box">
-        <div className="icon"><i className="fa-regular fa-credit-card"></i></div>
+        <div className="icon">
+          <i className="fa-regular fa-credit-card"></i>
+        </div>
         <p>This store can’t accept payments right now.</p>
       </div>
-      <button className="pay-btn btn-pay-now" disabled>Pay now</button>
+      <button className="pay-btn btn-pay-now" disabled>
+        Pay now
+      </button>
       <div className="text_overline"></div>
       <a href="">Privacy policy</a>
     </div>
   );
 };
 
-
-
 /////////////OrderSummary
 
 const OrderSummary = () => {
-  const { state } = useCart();
+  const location = useLocation();
+  const { cart } = location.state || { cart: [] };
 
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(state.cart));
-  }, [state.cart]);
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+  }, [cart]);
 
-  const subtotal = state.cart.reduce(
+  const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
   const tax = 2.46;
-  // const total = subtotal + tax;
 
   return (
     <div className="card p-3 mb-4 order-summary">
-
       <div className="order-items">
-        {state.cart.map((item) => (
+        {cart.map((item) => (
           <div
             key={item.id}
             className="d-flex align-items-center justify-content-between py-2"
           >
-
             <div className="d-flex align-items-center gap-2">
-              <div className="position-relative rounded  border" style={{ width: "55px", height: "55px" }}>
+              <div
+                className="position-relative rounded border"
+                style={{ width: "55px", height: "55px" }}
+              >
                 <img
-                  src={item.image}
+                  src={`http://localhost:5000${item.image}`}
                   alt={item.name}
                   className="w-100 h-100 object-fit-cover"
                 />
@@ -700,11 +683,13 @@ const OrderSummary = () => {
                   {item.quantity}
                 </span>
               </div>
-              <span className="ProductName text-truncate" style={{ maxWidth: "240px" }}>
+              <span
+                className="ProductName text-truncate"
+                style={{ maxWidth: "240px" }}
+              >
                 {item.name}
               </span>
             </div>
-
             <div className="ProductPrice">
               ${(item.price * item.quantity).toFixed(2)}
             </div>
@@ -714,7 +699,7 @@ const OrderSummary = () => {
 
       <div className="order-breakdown mt-3 small">
         <div className="d-flex justify-content-between">
-          <span>Subtotal: {state.cart.length} items</span>
+          <span>Subtotal: {cart.length} items</span>
           <span className="ProductPrice">${subtotal.toFixed(2)}</span>
         </div>
         <div className="d-flex justify-content-between">
@@ -723,13 +708,12 @@ const OrderSummary = () => {
         </div>
         <div className="d-flex justify-content-between fw-bold pt-3 total_oreder">
           <span>Total</span>
-          <span><span className="USD">USD</span>&nbsp;${subtotal.toFixed(2)}</span>
+          <span>
+            <span className="USD">USD</span>&nbsp;${subtotal.toFixed(2)}
+          </span>
         </div>
-        <p className="text-muted mt-1">
-          Including ${tax.toFixed(2)} in taxes
-        </p>
+        <p className="text-muted mt-1">Including ${tax.toFixed(2)} in taxes</p>
       </div>
     </div>
   );
 };
-
