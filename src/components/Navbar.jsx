@@ -1,6 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from "react-router-dom";
+import { useWishlist } from "../context/WishlistContext";
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Card from "../images/card.png"
 import {
   Check,
@@ -15,6 +18,9 @@ import {
 } from "./icon";
 
 function Navbar({ cart, addToCart, removeFromCart, shopCategories = [] })  {
+  const navigate = useNavigate();
+  const { wishlist } = useWishlist();
+const totalWishlistItems = wishlist.length;
 const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
 const [showCategories, setShowCategories] = useState(false);
@@ -129,6 +135,37 @@ const [showCategories, setShowCategories] = useState(false);
               <div className="rounded-circle border user d-flex justify-content-center align-items-center">
                 <User size={16} />
               </div>
+
+              {/* Wishlist Icon */}
+<div
+  className="wishlist-wrapper ms-3 d-flex align-items-center justify-content-center"
+  style={{ cursor: 'pointer', position: 'relative', width: '30px', height: '30px' }}
+  onClick={() => navigate("/wishlist")}
+>
+  <FontAwesomeIcon 
+    icon={faHeart} 
+    size="lg" 
+    color="#e93260ff" 
+    style={{ fontSize:'35px' }} 
+  />
+  {totalWishlistItems > 0 && (
+    <span
+      style={{
+        position: 'absolute',
+        top: '-6px',
+        right: '-6px',
+        backgroundColor: '#ffeef2ff',
+        color: '#e93260ff',
+        borderRadius: '50%',
+        padding: '2px 6px',
+        fontSize: '10px',
+        fontWeight: 'bold'
+      }}
+    >
+      {totalWishlistItems}
+    </span>
+  )}
+</div>
 
               <Link to="/cart" style={{ textDecoration: 'none' }}>
   <div className="cart-wrapper" style={{ cursor: 'pointer' }}>
